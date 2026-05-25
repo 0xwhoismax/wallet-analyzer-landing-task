@@ -65,6 +65,85 @@ ${WALLET_ANALYZER_API_URL}/api/wallet-analyzer
 
 It returns the analyzer service JSON.
 
+Successful response shape:
+
+```ts
+type AnalyzerFindingKey =
+  | "take_profit_trailing"
+  | "stop_loss"
+  | "chase_entry"
+  | "loss_spiral";
+
+type WalletAnalyzerResult = {
+  wallet: string;
+  timeframe: string;
+  windowDays: number;
+  nClosedTrades: number;
+  realizedPnlUsd: number;
+  heroAmountUsd: number;
+  subhead: string;
+  findings: Array<{
+    key: AnalyzerFindingKey;
+    rank: number;
+    title: string;
+    description: string;
+    dollarImpact: number;
+    nTrades: number;
+    avgHoldMinutes?: number;
+  }>;
+  examples: Array<{
+    findingKey: AnalyzerFindingKey;
+    title: string;
+    tokenSymbol: string;
+    tokenName?: string;
+    tokenImageUrl?: string;
+    tokenMint: string;
+    entryAt: number;
+    exitAt: number;
+    entryPrice: number;
+    exitPrice: number;
+    realizedPnlUsd: number;
+    estimatedImprovementUsd: number;
+    tradeSizeUsd: number;
+    evidenceLabel: string;
+    evidenceValue: string;
+    needsTrailingStop?: boolean;
+    entryTx: string;
+    exitTx: string;
+    whatHappened: string;
+    doDifferently: string;
+    lightSolution: string;
+  }>;
+  stats: {
+    swapCount: number;
+    tokenCount: number;
+    winRatePct: number;
+    avgHoldMinutes: number | null;
+    medianHoldMinutes: number | null;
+    medianTradeSizeUsd: number | null;
+    grossProfitUsd: number;
+    grossLossUsd: number;
+    avgWinUsd: number | null;
+    avgLossUsd: number | null;
+    profitFactor: number | null;
+    expectancyUsd: number | null;
+    lookbackDays: number;
+    oldestSwapAt: number | null;
+    newestSwapAt: number | null;
+  };
+  generatedAt: number;
+  warnings: string[];
+};
+```
+
+Errors return:
+
+```ts
+{ error: string }
+```
+
+Typical usage: use `heroAmountUsd` and `subhead` for the main result, `findings` for the ranked patterns, `examples` for supporting trades grouped by `findingKey`, `stats` for summary metrics, and `warnings` for non-blocking caveats.
+
 ## Useful Files
 
 - `src/app/page.tsx` - landing page
