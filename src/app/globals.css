@@ -1,0 +1,839 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-lato);
+  --font-brand: var(--font-jost);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-highlight: var(--highlight);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  /* Finance Light Theme */
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  /* Primary - Amber/Gold */
+  --primary: #f59e0b;
+  --primary-foreground: #ffffff;
+  --secondary: #fafafa;
+  --secondary-foreground: #171717;
+  --muted: #e5e5e5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #f59e0b;
+  /* Charts */
+  --chart-1: #f59e0b;
+  --chart-2: #fbbf24;
+  --chart-3: #fcd34d;
+  --chart-4: #b45309;
+  --chart-5: #92400e;
+  --chart-base: #171717;
+  --radius: 0.625rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #171717;
+  --sidebar-primary: #f59e0b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #f59e0b;
+  --brand: #f59e0b;
+  --bg-strategy-view: #ffffff;
+  /* Glow effects */
+  --glow-soft: rgba(217, 119, 6, 0.08);
+  --glow-medium: rgba(217, 119, 6, 0.15);
+  --surface-elevated: #ffffff;
+  --surface-sunken: #efefef;
+  --highlight: #0ea5e9;
+}
+
+.dark {
+  /* Finance Dark Theme — deep blue-black tones */
+  --background: #080808;
+  --foreground: #fafafa;
+
+  --card: #0b0d13;
+  --card-foreground: #fafafa;
+  --popover: #0b0d13;
+  --popover-foreground: #fafafa;
+
+  /* Primary - Bright Amber/Gold */
+  --primary: #FCD88D;
+  --primary-foreground: #171717;
+
+  --secondary: #1b1d27;
+  --secondary-foreground: #fafafa;
+
+  --muted: #151721;
+  --muted-foreground: #bcc4d1;
+
+  --accent: #151721;
+  --accent-foreground: #fafafa;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+
+  --border: #1b1d27;
+  --input: #1b1d27;
+
+  --ring: #FCD88D;
+
+  /* Charts */
+  --chart-1: #FCD88D;
+  --chart-2: #fcd34d;
+  --chart-3: #fde68a;
+  --chart-4: #f59e0b;
+  --chart-5: #d97706;
+  --chart-base: #fafafa;
+
+  --sidebar: #040608;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #FCD88D;
+  --sidebar-primary-foreground: #171717;
+  --sidebar-accent: #1b1d27;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #1b1d27;
+  --sidebar-ring: #FCD88D;
+
+  --brand: #FCD88D;
+  --bg-strategy-view: #040608;
+
+  --glow-soft: rgba(251, 191, 36, 0.08);
+  --glow-medium: rgba(251, 191, 36, 0.15);
+  --surface-elevated: #0f1118;
+  --surface-sunken: #040608;
+  --highlight: #38bdf8;
+}
+
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
+.border-input {
+  border-color: var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  html {
+    background-color: var(--background);
+  }
+
+  html,
+  body {
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  /* Hide scrollbars globally while preserving scroll */
+  * {
+    -ms-overflow-style: none; /* IE and legacy Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* Hide number input spinners (Chrome, Safari, Edge) */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+    display: none !important;
+  }
+
+  /* Hide number input spinners (Firefox + generic) */
+  input[type="number"] {
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus (triggers when font-size < 16px) */
+  @supports (-webkit-touch-callout: none) {
+    input,
+    textarea,
+    select {
+      font-size: 16px;
+    }
+  }
+
+  /* All headings use the brand font (Jost) by default.
+     Override per-element with a font-family utility (font-mono, font-sans, etc.). */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  [role="heading"] {
+    font-family: var(--font-jost), system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-number,
+  .tabular-nums,
+  .font-mono {
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .font-number {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Brand font for logos and headings */
+  .font-brand {
+    font-family: var(--font-jost), system-ui, sans-serif;
+  }
+
+  /* iOS dynamic viewport + safe-area helpers */
+  .h-app {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .min-h-app {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .min-h-screen-safe {
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Fallback for older iOS Safari */
+    @supports (-webkit-touch-callout: none) {
+      min-height: -webkit-fill-available;
+    }
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mb-safe {
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+  .bottom-safe {
+    bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  .px-safe {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  .overscroll-contain { overscroll-behavior: contain; }
+  .overscroll-none { overscroll-behavior: none; }
+  .touch-pan-y { touch-action: pan-y; }
+  .ios-smooth-scroll { -webkit-overflow-scrolling: touch; }
+
+
+  .bg-strategy-view {
+    background-color: var(--bg-strategy-view);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
+  /* Chrome: skip rendering off-screen cards */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 176px 1px;
+  }
+
+  /* Brand accent text */
+  .gradient-text {
+    color: var(--brand);
+  }
+
+  /* Light Trade - Floating card effect */
+  .light-card {
+    background: var(--surface-elevated);
+    border: 1px solid oklch(from var(--border) l c h / 0.5);
+    box-shadow: 
+      0 1px 2px oklch(from var(--foreground) l c h / 0.03),
+      0 4px 12px oklch(from var(--foreground) l c h / 0.04),
+      0 0 0 1px oklch(from var(--background) l c h / 0.8) inset;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .light-card:hover {
+    box-shadow: 
+      0 2px 4px oklch(from var(--foreground) l c h / 0.04),
+      0 8px 24px oklch(from var(--foreground) l c h / 0.06),
+      0 0 0 1px oklch(from var(--background) l c h / 0.8) inset;
+  }
+
+  .dark .light-card {
+    box-shadow: 
+      0 1px 2px oklch(0 0 0 / 0.2),
+      0 4px 12px oklch(0 0 0 / 0.15),
+      0 0 0 1px oklch(from var(--border) l c h / 0.3) inset;
+  }
+
+  .dark .light-card:hover {
+    box-shadow: 
+      0 2px 4px oklch(0 0 0 / 0.25),
+      0 8px 24px oklch(0 0 0 / 0.2),
+      0 0 0 1px oklch(from var(--border) l c h / 0.4) inset;
+  }
+
+  /* Light card elevated - hover state as resting state, no background override */
+  .light-card-elevated {
+    border: 1px solid oklch(from var(--border) l c h / 0.5);
+    box-shadow:
+      0 2px 4px oklch(from var(--foreground) l c h / 0.04),
+      0 8px 24px oklch(from var(--foreground) l c h / 0.06),
+      0 0 0 1px oklch(from var(--background) l c h / 0.8) inset;
+  }
+
+  .dark .light-card-elevated {
+    box-shadow:
+      0 2px 4px oklch(0 0 0 / 0.25),
+      0 8px 24px oklch(0 0 0 / 0.2),
+      0 0 0 1px oklch(from var(--border) l c h / 0.4) inset;
+  }
+
+  .analyzer-hero-frosted {
+    -webkit-backdrop-filter: blur(22px) saturate(135%);
+    backdrop-filter: blur(22px) saturate(135%);
+    background:
+      linear-gradient(180deg, rgba(24, 24, 24, 0.62), rgba(8, 9, 9, 0.58)),
+      rgba(12, 12, 12, 0.52);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.045) inset,
+      0 18px 42px rgba(0, 0, 0, 0.38);
+  }
+
+  .analyzer-pattern-selected {
+    border-color: rgba(16, 185, 129, 0.78);
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.2),
+      0 4px 12px oklch(0 0 0 / 0.15),
+      0 0 0 1px rgba(16, 185, 129, 0.28) inset;
+  }
+
+  /* Soft glow for primary elements */
+  .glow-soft {
+    box-shadow: 0 0 20px var(--glow-soft), 0 0 40px var(--glow-soft);
+  }
+
+  /* Surface variants */
+  .surface-elevated { background: var(--surface-elevated); }
+  .surface-sunken { background: var(--surface-sunken); }
+
+  /* A fix for logo icon to display correctly in the menu without having 2 versions of them */
+  .logo-icon {
+    filter: brightness(0);
+    transition: filter 150ms ease;
+  }
+
+  .dark .logo-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  .strategy-icon:hover { filter: none; }
+  .dark .strategy-icon:hover { filter: none; }
+
+  /* Strategy inline SVG hover color */
+  .strategy-icon path { transition: fill 150ms ease; }
+  .strategy-icon:hover path { fill: var(--brand); }
+
+  .backdrop-blur-sm {
+    /* Standard property for modern browsers */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px); /* Safari/iOS support */
+    /* More opaque fallback for better visibility */
+    background-color: oklch(from var(--popover) l c h / 0.8) !important;
+  }
+
+  /* Firefox-specific fallback - disable blur and use solid background */
+  @supports (-moz-appearance: none) {
+    .backdrop-blur-sm {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.95) !important;
+    }
+  }
+
+  @supports not (backdrop-filter: blur(1px)) {
+    .backdrop-blur-sm {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.95) !important;
+    }
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: oklch(from var(--popover) l c h / 0.85) !important;
+  }
+
+  @supports (-moz-appearance: none) {
+    .backdrop-blur-md {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.96) !important;
+    }
+  }
+
+  @supports not (backdrop-filter: blur(1px)) {
+    .backdrop-blur-md {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.96) !important;
+    }
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: oklch(from var(--popover) l c h / 0.88) !important;
+  }
+
+  @supports (-moz-appearance: none) {
+    .backdrop-blur-lg {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.97) !important;
+    }
+  }
+
+  @supports not (backdrop-filter: blur(1px)) {
+    .backdrop-blur-lg {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.97) !important;
+    }
+  }
+
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    background-color: oklch(from var(--popover) l c h / 0.9) !important;
+  }
+
+  @supports (-moz-appearance: none) {
+    .backdrop-blur-2xl {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.98) !important;
+    }
+  }
+
+  @supports not (backdrop-filter: blur(1px)) {
+    .backdrop-blur-2xl {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: oklch(from var(--popover) l c h / 0.98) !important;
+    }
+  }
+
+  /* Keyframes replacing framer-motion for simple fades and pops */
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
+  @keyframes popIn { 0% { transform: scale(0) } 80% { transform: scale(1.05) } 100% { transform: scale(1) } }
+  @keyframes shimmer { 0%, 100% { transform: translateX(-100%); } 50% { transform: translateX(100%); } }
+  @keyframes shimmer-sweep { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+  @keyframes ripple { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(2.5); opacity: 0; } }
+  @keyframes logoBounce { 0% { transform: scale(1); } 30% { transform: scale(0.85); } 60% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+  /* New trade slide-in animation */
+  @keyframes tradeSlideIn {
+    from { opacity: 0; transform: translateY(-100%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-in-trade {
+    animation: tradeSlideIn 0.25s ease-out;
+  }
+
+  /* Value flash animation for live updates */
+  @keyframes valueFlash {
+    0% { background-color: oklch(from var(--brand) l c h / 0.35); }
+    100% { background-color: transparent; }
+  }
+  .value-flash {
+    animation: valueFlash 300ms ease-out;
+  }
+
+  /* Text color flash for price changes */
+  @keyframes textFlashGreen {
+    0%, 40% { color: #22c55e; }
+    100% { color: inherit; }
+  }
+  @keyframes textFlashRed {
+    0%, 40% { color: #ef4444; }
+    100% { color: inherit; }
+  }
+  .text-flash-up {
+    animation: textFlashGreen 600ms ease-out;
+  }
+  .text-flash-down {
+    animation: textFlashRed 600ms ease-out;
+  }
+
+  /* Beam card entry flash for new tokens */
+  @keyframes beamEntryFlash {
+    from { background-color: oklch(from var(--brand) l c h / 0.15); }
+    to { background-color: transparent; }
+  }
+  .beam-entry-flash {
+    animation: beamEntryFlash 600ms ease-out;
+  }
+
+  /* Claim button: tension builds — continuous shrink with intensifying shake */
+  @keyframes claimTension {
+    0%   { transform: scale(1)    translateX(0); }
+    2%   { transform: scale(0.99) translateX(-1px); }
+    4%   { transform: scale(0.99) translateX(1px); }
+    6%   { transform: scale(0.98) translateX(-1px); }
+    8%   { transform: scale(0.98) translateX(1px); }
+    10%  { transform: scale(0.97) translateX(-1.5px); }
+    12%  { transform: scale(0.97) translateX(1.5px); }
+    14%  { transform: scale(0.96) translateX(-1.5px); }
+    16%  { transform: scale(0.96) translateX(1.5px); }
+    18%  { transform: scale(0.95) translateX(-2px); }
+    20%  { transform: scale(0.95) translateX(2px); }
+    22%  { transform: scale(0.94) translateX(-2px); }
+    24%  { transform: scale(0.94) translateX(2px); }
+    26%  { transform: scale(0.93) translateX(-2px); }
+    28%  { transform: scale(0.93) translateX(2px); }
+    30%  { transform: scale(0.92) translateX(-2.5px); }
+    32%  { transform: scale(0.92) translateX(2.5px); }
+    34%  { transform: scale(0.91) translateX(-2.5px); }
+    36%  { transform: scale(0.91) translateX(2.5px); }
+    38%  { transform: scale(0.90) translateX(-3px); }
+    40%  { transform: scale(0.90) translateX(3px); }
+    42%  { transform: scale(0.89) translateX(-3px); }
+    44%  { transform: scale(0.89) translateX(3px); }
+    46%  { transform: scale(0.88) translateX(-3px); }
+    48%  { transform: scale(0.88) translateX(3px); }
+    50%  { transform: scale(0.87) translateX(-3.5px); }
+    52%  { transform: scale(0.87) translateX(3.5px); }
+    54%  { transform: scale(0.86) translateX(-3.5px); }
+    56%  { transform: scale(0.86) translateX(3.5px); }
+    58%  { transform: scale(0.85) translateX(-4px); }
+    60%  { transform: scale(0.85) translateX(4px); }
+    62%  { transform: scale(0.84) translateX(-4px); }
+    64%  { transform: scale(0.84) translateX(4px); }
+    66%  { transform: scale(0.83) translateX(-4px); }
+    68%  { transform: scale(0.83) translateX(4px); }
+    70%  { transform: scale(0.82) translateX(-4.5px); }
+    72%  { transform: scale(0.82) translateX(4.5px); }
+    74%  { transform: scale(0.81) translateX(-4.5px); }
+    76%  { transform: scale(0.81) translateX(4.5px); }
+    78%  { transform: scale(0.80) translateX(-5px); }
+    80%  { transform: scale(0.80) translateX(5px); }
+    82%  { transform: scale(0.79) translateX(-5px); }
+    84%  { transform: scale(0.79) translateX(5px); }
+    86%  { transform: scale(0.78) translateX(-5px); }
+    88%  { transform: scale(0.78) translateX(5px); }
+    90%  { transform: scale(0.77) translateX(-5px); }
+    92%  { transform: scale(0.77) translateX(5px); }
+    94%  { transform: scale(0.76) translateX(-5px); }
+    96%  { transform: scale(0.76) translateX(5px); }
+    98%  { transform: scale(0.75) translateX(-5px); }
+    100% { transform: scale(0.75) translateX(0); }
+  }
+  /* Explosion pop */
+  @keyframes claimExplode {
+    0%   { transform: scale(0.75); }
+    40%  { transform: scale(1.2); }
+    70%  { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+  /* Light shockwave that expands outward */
+  @keyframes claimShockwave {
+    0%   { transform: scale(0.3); opacity: 0.8; }
+    100% { transform: scale(4); opacity: 0; }
+  }
+
+  /* Digit roll-in for animated numbers */
+  @keyframes digitRollIn {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    60%  { transform: translateY(8%); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Internal glow via pseudo-element with smooth opacity pulse */
+  @keyframes inner-glow-opacity {
+    0% { opacity: 0.3 }
+    100% { opacity: 0.8 }
+  }
+
+  .inner-glow { position: relative; overflow: hidden; }
+  .inner-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      100% 100% at 50% 0%,
+      oklch(from var(--brand) l c h / 0.12) 0%,
+      oklch(from var(--brand) l c h / 0.06) 50%,
+      transparent 100%
+    );
+    animation: inner-glow-opacity 2s ease-in-out infinite alternate;
+  }
+
+  /* Visual comma styling for inputs - makes text slightly muted when editing */
+  .comma-light {
+    opacity: 0.85;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Optional: Add subtle text shadow for better readability */
+  .comma-light:focus {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Dark mode adjustment */
+  .dark .comma-light:focus {
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Unified Trading Event Colors */
+  /* Entry - Blue */
+  .entry-bg { background-color: rgb(59 130 246 / 0.1); }
+  .entry-bg-solid { background-color: rgb(59 130 246 / 0.8); }
+  .entry-text { color: rgb(59 130 246); }
+  .entry-border { border-color: rgb(59 130 246 / 0.4); }
+  .entry-icon { color: rgb(96 165 250); }
+  .entry-progress { background-color: rgb(59 130 246 / 0.25); }
+
+  /* Take Profit - Green */
+  .take-profit-bg { background-color: rgb(34 197 94 / 0.1); }
+  .take-profit-bg-solid { background-color: rgb(34 197 94 / 0.8); }
+  .take-profit-text { color: rgb(34 197 94); }
+  .take-profit-border { border-color: rgb(34 197 94 / 0.4); }
+  .take-profit-icon { color: rgb(74 222 128); }
+  .take-profit-progress { background-color: rgb(34 197 94 / 0.2); }
+
+  /* Stop Loss - Red */
+  .stop-loss-bg { background-color: rgb(239 68 68 / 0.1); }
+  .stop-loss-bg-solid { background-color: rgb(239 68 68 / 0.8); }
+  .stop-loss-text { color: rgb(239 68 68); }
+  .stop-loss-border { border-color: rgb(239 68 68); }
+  .stop-loss-icon { color: rgb(248 113 113); }
+  .stop-loss-progress { background-color: rgb(239 69 69 / 0.2); }
+
+  /* Manual actions - Blue (same as entry) */
+  .manual-bg-solid { background-color: rgb(59 130 246 / 0.5); }
+  .manual-border { border-color: rgb(59 130 246 / 0.3); }
+  .manual-text { color: rgb(147 197 253); }
+
+  /* Position created - Indigo */
+  .position-created-bg-solid { background-color: rgb(99 102 241 / 0.5); }
+  .position-created-border { border-color: rgb(99 102 241 / 0.3); }
+  .position-created-text { color: rgb(165 180 252); }
+
+  /* Error - Amber/Gold (Android-safe, avoids red shift) */
+  .error-bg-solid { background-color: rgb(251 191 36 / 0.6); }
+  .error-border { border-color: rgb(251 191 36 / 0.4); }
+  .error-text { color: rgb(251 191 36); }
+
+  /* XP Award styling - Android-safe amber (replaces orange which shifts red on Android WebView) */
+  .xp-award-bg { background-color: rgb(251 191 36 / 0.1); }
+  .xp-award-border { border-color: rgb(251 191 36 / 0.5); }
+  .xp-award-text { color: rgb(251 191 36); }
+
+  /* Target Card Gradients */
+  /* Entry - Blue gradient */
+  .entry-gradient { 
+    background: linear-gradient(135deg, rgb(59 130 246 / 0.15) 0%, rgb(96 165 250 / 0.2) 100%);
+  }
+
+  /* Take Profit - Green gradient */
+  .take-profit-gradient { 
+    background: linear-gradient(135deg, rgb(34 197 94 / 0.15) 0%, rgb(74 222 128 / 0.2) 100%);
+  }
+
+  /* Stop Loss - Red gradient */
+  .stop-loss-gradient { 
+    background: linear-gradient(135deg, rgb(239 68 68 / 0.15) 0%, rgb(248 113 113 / 0.2) 100%);
+  }
+
+  /* Button shadow utility - blends with theme colors */
+  .button-shadow {
+    box-shadow: 
+      inset 0 1px 2px 0 rgba(0, 0, 0, 0.06),
+      inset 0 -2px 3px 0 rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .dark .button-shadow {
+    box-shadow: 
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.035),
+      inset 0 -2px 3px 0 rgba(0, 0, 0, 0.36) !important;
+  }
+
+  /* Internal shadow utility - blends with theme */
+  .internal-shadow {
+    box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .dark .internal-shadow {
+    box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Card shadow utility - theme-aware floating shadows */
+  .card-shadow {
+    box-shadow: 
+      0 1px 3px oklch(from var(--foreground) l c h / 0.04),
+      0 4px 16px oklch(from var(--foreground) l c h / 0.03);
+  }
+
+  .dark .card-shadow {
+    box-shadow: 
+      0 1px 3px oklch(0 0 0 / 0.25),
+      0 4px 16px oklch(0 0 0 / 0.15);
+  }
+}
+
+.bg-strategy-view {
+  background-color: var(--bg-strategy-view, var(--background)) !important;
+}
+
+/* Documentation prose styles */
+.prose {
+  line-height: 1.75;
+}
+
+.prose h1:first-child,
+.prose h2:first-child,
+.prose h3:first-child {
+  margin-top: 0;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+}
+
+.prose table {
+  border-spacing: 0;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose hr {
+  border-color: var(--border);
+}
+
+/* iOS 25 and lower PWA safe area fix */
+html.ios-pwa-legacy {
+  --safe-area-top: env(safe-area-inset-top);
+  --safe-area-bottom: env(safe-area-inset-bottom);
+  --safe-area-left: env(safe-area-inset-left);
+  --safe-area-right: env(safe-area-inset-right);
+}
+
+/* Body padding handled by individual components via pt-safe */
+
+/* Fixed positioned sidebar */
+html.ios-pwa-legacy [data-slot="sidebar-container"] {
+  top: calc(var(--sidebar-margin) + var(--safe-area-top)) !important;
+  bottom: calc(var(--sidebar-margin) + var(--safe-area-bottom)) !important;
+  left: calc(var(--sidebar-margin) + var(--safe-area-left)) !important;
+}
+
+html.ios-pwa-legacy [data-slot="sidebar-container"][data-side="right"] {
+  right: calc(var(--sidebar-margin) + var(--safe-area-right)) !important;
+  left: auto !important;
+}
+
+/* Sheet/Drawer content */
+html.ios-pwa-legacy [data-slot="sheet-content"] {
+  padding-top: var(--safe-area-top);
+}
+
+/* Only apply safe area padding to non-bottom drawers (e.g. left/right/top) */
+html.ios-pwa-legacy [data-slot="drawer-content"]:not([data-vaul-drawer-direction="bottom"]) {
+  padding-top: var(--safe-area-top);
+}
+
+/* Sticky top offsets handled by individual components */
+
+/* Mobile bottom navigation - reset margin and keep original position */
+html.ios-pwa-legacy nav.fixed[class*="bottom-"] {
+  margin-bottom: 10 !important;
+}
+
+/* Dialog - remove safe area padding that creates gap */
+html.ios-pwa-legacy [data-slot="dialog-content"] {
+  padding-bottom: 0 !important;
+}
+
+/* Drag: prevent iframes (e.g. TradingView chart) from stealing pointer events
+   while a draggable panel is being moved across them */
+body.dragging-panel iframe {
+  pointer-events: none;
+}
